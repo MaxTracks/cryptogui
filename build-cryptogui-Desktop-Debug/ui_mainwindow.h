@@ -16,6 +16,7 @@
 #include <QtGui/QFrame>
 #include <QtGui/QHeaderView>
 #include <QtGui/QLabel>
+#include <QtGui/QListWidget>
 #include <QtGui/QMainWindow>
 #include <QtGui/QMenu>
 #include <QtGui/QMenuBar>
@@ -34,6 +35,9 @@ class Ui_MainWindow
 {
 public:
     QAction *actionEdit;
+    QAction *actionOpen_File;
+    QAction *actionQuit;
+    QAction *actionAbout;
     QWidget *centralWidget;
     QTabWidget *tabWidget;
     QWidget *hashtab;
@@ -53,11 +57,10 @@ public:
     QFrame *line_3;
     QLabel *label_3;
     QWidget *tab_3;
+    QPushButton *pushButton_2;
+    QListWidget *listWidget;
     QMenuBar *menuBar;
     QMenu *menuHash_Sums;
-    QMenu *menuEncrypt;
-    QMenu *menuDecrypt;
-    QMenu *menuTools;
     QMenu *menuHelp;
     QToolBar *mainToolBar;
     QStatusBar *statusBar;
@@ -68,14 +71,20 @@ public:
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QString::fromUtf8("MainWindow"));
-        MainWindow->resize(443, 346);
+        MainWindow->resize(443, 333);
         actionEdit = new QAction(MainWindow);
         actionEdit->setObjectName(QString::fromUtf8("actionEdit"));
+        actionOpen_File = new QAction(MainWindow);
+        actionOpen_File->setObjectName(QString::fromUtf8("actionOpen_File"));
+        actionQuit = new QAction(MainWindow);
+        actionQuit->setObjectName(QString::fromUtf8("actionQuit"));
+        actionAbout = new QAction(MainWindow);
+        actionAbout->setObjectName(QString::fromUtf8("actionAbout"));
         centralWidget = new QWidget(MainWindow);
         centralWidget->setObjectName(QString::fromUtf8("centralWidget"));
         tabWidget = new QTabWidget(centralWidget);
         tabWidget->setObjectName(QString::fromUtf8("tabWidget"));
-        tabWidget->setGeometry(QRect(0, 20, 441, 281));
+        tabWidget->setGeometry(QRect(0, 0, 441, 281));
         hashtab = new QWidget();
         hashtab->setObjectName(QString::fromUtf8("hashtab"));
         messageInput = new QPlainTextEdit(hashtab);
@@ -83,7 +92,7 @@ public:
         messageInput->setGeometry(QRect(10, 100, 291, 91));
         pushButton = new QPushButton(hashtab);
         pushButton->setObjectName(QString::fromUtf8("pushButton"));
-        pushButton->setGeometry(QRect(320, 132, 99, 111));
+        pushButton->setGeometry(QRect(320, 132, 101, 111));
         radioButton_3 = new QRadioButton(hashtab);
         buttonGroup = new QButtonGroup(MainWindow);
         buttonGroup->setObjectName(QString::fromUtf8("buttonGroup"));
@@ -145,6 +154,12 @@ public:
         tabWidget->addTab(hashtab, QString());
         tab_3 = new QWidget();
         tab_3->setObjectName(QString::fromUtf8("tab_3"));
+        pushButton_2 = new QPushButton(tab_3);
+        pushButton_2->setObjectName(QString::fromUtf8("pushButton_2"));
+        pushButton_2->setGeometry(QRect(10, 210, 141, 31));
+        listWidget = new QListWidget(tab_3);
+        listWidget->setObjectName(QString::fromUtf8("listWidget"));
+        listWidget->setGeometry(QRect(170, 10, 256, 231));
         tabWidget->addTab(tab_3, QString());
         MainWindow->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(MainWindow);
@@ -152,12 +167,6 @@ public:
         menuBar->setGeometry(QRect(0, 0, 443, 20));
         menuHash_Sums = new QMenu(menuBar);
         menuHash_Sums->setObjectName(QString::fromUtf8("menuHash_Sums"));
-        menuEncrypt = new QMenu(menuBar);
-        menuEncrypt->setObjectName(QString::fromUtf8("menuEncrypt"));
-        menuDecrypt = new QMenu(menuBar);
-        menuDecrypt->setObjectName(QString::fromUtf8("menuDecrypt"));
-        menuTools = new QMenu(menuBar);
-        menuTools->setObjectName(QString::fromUtf8("menuTools"));
         menuHelp = new QMenu(menuBar);
         menuHelp->setObjectName(QString::fromUtf8("menuHelp"));
         MainWindow->setMenuBar(menuBar);
@@ -169,11 +178,10 @@ public:
         MainWindow->setStatusBar(statusBar);
 
         menuBar->addAction(menuHash_Sums->menuAction());
-        menuBar->addAction(menuEncrypt->menuAction());
-        menuBar->addAction(menuDecrypt->menuAction());
-        menuBar->addAction(menuTools->menuAction());
         menuBar->addAction(menuHelp->menuAction());
-        menuEncrypt->addAction(actionEdit);
+        menuHash_Sums->addAction(actionOpen_File);
+        menuHash_Sums->addAction(actionQuit);
+        menuHelp->addAction(actionAbout);
 
         retranslateUi(MainWindow);
 
@@ -187,6 +195,12 @@ public:
     {
         MainWindow->setWindowTitle(QApplication::translate("MainWindow", "MainWindow", 0, QApplication::UnicodeUTF8));
         actionEdit->setText(QApplication::translate("MainWindow", "Edit", 0, QApplication::UnicodeUTF8));
+        actionOpen_File->setText(QApplication::translate("MainWindow", "Open File", 0, QApplication::UnicodeUTF8));
+        actionOpen_File->setShortcut(QApplication::translate("MainWindow", "Ctrl+O", 0, QApplication::UnicodeUTF8));
+        actionQuit->setText(QApplication::translate("MainWindow", "Quit", 0, QApplication::UnicodeUTF8));
+        actionQuit->setShortcut(QApplication::translate("MainWindow", "Ctrl+Q", 0, QApplication::UnicodeUTF8));
+        actionAbout->setText(QApplication::translate("MainWindow", "About", 0, QApplication::UnicodeUTF8));
+        actionAbout->setShortcut(QApplication::translate("MainWindow", "Ctrl+A, Ctrl+B", 0, QApplication::UnicodeUTF8));
 #ifndef QT_NO_TOOLTIP
         hashtab->setToolTip(QApplication::translate("MainWindow", "<html><head/><body><p>Hash Tab</p></body></html>", 0, QApplication::UnicodeUTF8));
 #endif // QT_NO_TOOLTIP
@@ -209,11 +223,9 @@ public:
         browseFileToHash->setText(QApplication::translate("MainWindow", "Browse", 0, QApplication::UnicodeUTF8));
         label_3->setText(QApplication::translate("MainWindow", "Input Type", 0, QApplication::UnicodeUTF8));
         tabWidget->setTabText(tabWidget->indexOf(hashtab), QApplication::translate("MainWindow", "Hashing", 0, QApplication::UnicodeUTF8));
+        pushButton_2->setText(QApplication::translate("MainWindow", "Generate Frequency", 0, QApplication::UnicodeUTF8));
         tabWidget->setTabText(tabWidget->indexOf(tab_3), QApplication::translate("MainWindow", "Analysis", 0, QApplication::UnicodeUTF8));
         menuHash_Sums->setTitle(QApplication::translate("MainWindow", "File", 0, QApplication::UnicodeUTF8));
-        menuEncrypt->setTitle(QApplication::translate("MainWindow", "Edit", 0, QApplication::UnicodeUTF8));
-        menuDecrypt->setTitle(QApplication::translate("MainWindow", "Analyze", 0, QApplication::UnicodeUTF8));
-        menuTools->setTitle(QApplication::translate("MainWindow", "Tools", 0, QApplication::UnicodeUTF8));
         menuHelp->setTitle(QApplication::translate("MainWindow", "Help", 0, QApplication::UnicodeUTF8));
     } // retranslateUi
 

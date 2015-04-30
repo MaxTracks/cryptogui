@@ -27,6 +27,14 @@ private slots:
 
     void on_browseFileToHash_clicked();
 
+    void on_pushButton_2_clicked();
+
+    void on_actionQuit_triggered();
+
+    void on_actionOpen_File_triggered();
+
+    void on_actionAbout_triggered();
+
 private:
     Ui::MainWindow *ui;
 };
