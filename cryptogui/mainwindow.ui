@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>442</width>
-    <height>336</height>
+    <width>443</width>
+    <height>346</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -18,7 +18,7 @@
     <property name="geometry">
      <rect>
       <x>0</x>
-      <y>10</y>
+      <y>20</y>
       <width>441</width>
       <height>281</height>
      </rect>
@@ -56,9 +56,9 @@
       <property name="geometry">
        <rect>
         <x>320</x>
-        <y>220</y>
+        <y>132</y>
         <width>99</width>
-        <height>23</height>
+        <height>111</height>
        </rect>
       </property>
       <property name="text">
@@ -183,24 +183,11 @@
        <enum>Qt::Vertical</enum>
       </property>
      </widget>
-     <widget class="QCheckBox" name="applySalt">
-      <property name="geometry">
-       <rect>
-        <x>320</x>
-        <y>140</y>
-        <width>101</width>
-        <height>21</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Apply Salt</string>
-      </property>
-     </widget>
      <widget class="Line" name="line_2">
       <property name="geometry">
        <rect>
         <x>310</x>
-        <y>110</y>
+        <y>120</y>
         <width>118</width>
         <height>3</height>
        </rect>
@@ -209,36 +196,13 @@
        <enum>Qt::Horizontal</enum>
       </property>
      </widget>
-     <widget class="QLabel" name="label_2">
-      <property name="geometry">
-       <rect>
-        <x>320</x>
-        <y>120</y>
-        <width>57</width>
-        <height>14</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Salt</string>
-      </property>
-     </widget>
-     <widget class="QPlainTextEdit" name="saltTextEdit">
-      <property name="geometry">
-       <rect>
-        <x>320</x>
-        <y>160</y>
-        <width>104</width>
-        <height>51</height>
-       </rect>
-      </property>
-     </widget>
      <widget class="QTextEdit" name="hashResult">
       <property name="geometry">
        <rect>
         <x>10</x>
         <y>200</y>
         <width>291</width>
-        <height>41</height>
+        <height>51</height>
        </rect>
       </property>
      </widget>
@@ -297,11 +261,6 @@
       <string>Analysis</string>
      </attribute>
     </widget>
-    <widget class="QWidget" name="tab">
-     <attribute name="title">
-      <string>Hash Crack</string>
-     </attribute>
-    </widget>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menuBar">
@@ -309,7 +268,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>442</width>
+     <width>443</width>
      <height>20</height>
     </rect>
    </property>
